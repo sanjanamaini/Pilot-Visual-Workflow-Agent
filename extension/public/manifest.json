@@ -1,0 +1,50 @@
+{
+    "manifest_version": 3,
+    "name": "Pilot — Visual Workflow Agent",
+    "version": "1.0.0",
+    "description": "AI agent that watches your screen and executes multi-step workflows across any web app using visual understanding.",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "debugger",
+        "scripting",
+        "sidePanel"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' ws://localhost:8000/ http://localhost:8000/"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "action": {
+        "default_title": "Open Pilot",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+P",
+                "mac": "Command+Shift+P"
+            },
+            "description": "Open Pilot command bar"
+        }
+    }
+}
