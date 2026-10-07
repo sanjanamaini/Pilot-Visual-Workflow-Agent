@@ -1,0 +1,174 @@
+{
+ "base_case_assumed": {
+  "k": 6,
+  "a": 0.9,
+  "s": 0.85,
+  "e": 0.05,
+  "R": 3
+ },
+ "base_exact": {
+  "correct": 0.8932509802902293,
+  "silent": 0.09333054018407001,
+  "stopped": 0.013418479525700421,
+  "calls": 23.27018114883541
+ },
+ "base_monte_carlo": {
+  "correct": 0.89314,
+  "silent": 0.0935,
+  "stopped": 0.01336,
+  "calls": 23.25598
+ },
+ "correct_k6": {
+  "a=0.8,s=1.0": 0.8753064005140478,
+  "a=0.8,s=0.7": 0.6158045616864625,
+  "a=0.9,s=1.0": 0.9793704734712018,
+  "a=0.9,s=0.7": 0.8144993786567849,
+  "a=0.97,s=1.0": 0.9986536813901439,
+  "a=0.97,s=0.7": 0.9453993571407766
+ },
+ "false_pass_share_of_passes_q": 0.017241379310344827,
+ "wrong_share_approx": 0.0990904872984546,
+ "silent_vs_cap": {
+  "0": {
+   "silent_share_of_all_runs": 0.04296823156335937,
+   "wrong_share_of_completions": 0.09909048729845446
+  },
+  "3": {
+   "silent_share_of_all_runs": 0.09333054018407001,
+   "wrong_share_of_completions": 0.09459992737265271
+  },
+  "10": {
+   "silent_share_of_all_runs": 0.09441651612060009,
+   "wrong_share_of_completions": 0.09441651879655542
+  }
+ },
+ "wrong_share_a_eq_s": {
+  "0.9": 0.06428906058140475,
+  "0.95": 0.01565754669809531,
+  "0.96": 0.009947724900982802,
+  "0.97": 0.0055511923414571914
+ },
+ "settle_m0.5": {
+  "unsettled_at_1.5s": 0.05827201160206724,
+  "silent_current": 0.12213195808439223,
+  "silent_pending": 0.09342742073139812,
+  "extra_verifier_calls_per_run": 0.3861524143089815
+ },
+ "settle_m1.0": {
+  "unsettled_at_1.5s": 0.2812150157166605,
+  "silent_current": 0.22344419973413526,
+  "silent_pending": 0.09596030871187804,
+  "extra_verifier_calls_per_run": 2.1319010145483235
+ },
+ "settle_m2.0": {
+  "unsettled_at_1.5s": 0.65945434288926,
+  "silent_current": 0.36605827028433746,
+  "silent_pending": 0.12213195808439223,
+  "extra_verifier_calls_per_run": 6.38403088796153
+ },
+ "by_cap": {
+  "0": {
+   "correct": 0.3907,
+   "silent": 0.043,
+   "stopped": 0.5664,
+   "calls": 15.0702
+  },
+  "1": {
+   "correct": 0.7133,
+   "silent": 0.0761,
+   "stopped": 0.2107,
+   "calls": 21.0641
+  },
+  "2": {
+   "correct": 0.8517,
+   "silent": 0.0895,
+   "stopped": 0.0588,
+   "calls": 22.8429
+  },
+  "3": {
+   "correct": 0.8933,
+   "silent": 0.0933,
+   "stopped": 0.0134,
+   "calls": 23.2702
+  },
+  "4": {
+   "correct": 0.9032,
+   "silent": 0.0942,
+   "stopped": 0.0026,
+   "calls": 23.3579
+  },
+  "5": {
+   "correct": 0.9052,
+   "silent": 0.0944,
+   "stopped": 0.0005,
+   "calls": 23.3739
+  },
+  "6": {
+   "correct": 0.9055,
+   "silent": 0.0944,
+   "stopped": 0.0001,
+   "calls": 23.3766
+  },
+  "7": {
+   "correct": 0.9056,
+   "silent": 0.0944,
+   "stopped": 0.0,
+   "calls": 23.377
+  },
+  "8": {
+   "correct": 0.9056,
+   "silent": 0.0944,
+   "stopped": 0.0,
+   "calls": 23.377
+  }
+ },
+ "worst_case_calls_R3_k6": 35,
+ "tornado": {
+  "Runs that finish correctly": {
+   "e (false alarm)": {
+    "at_low_end": 0.8560211362847474,
+    "at_high_end": 0.9001928900297551
+   },
+   "k (steps)": {
+    "at_low_end": 0.9500832407629686,
+    "at_high_end": 0.79611415573884
+   },
+   "s (verifier catch)": {
+    "at_low_end": 0.7658728155202255,
+    "at_high_end": 0.9615358792166122
+   },
+   "a (action success)": {
+    "at_low_end": 0.7358101791754976,
+    "at_high_end": 0.9716307885212402
+   },
+   "R (replan cap)": {
+    "at_low_end": 0.3906579694456406,
+    "at_high_end": 0.9055143146269291
+   }
+  },
+  "Wrong among reported completions": {
+   "e (false alarm)": {
+    "at_low_end": 0.09580880337450069,
+    "at_high_end": 0.09443778627835044
+   },
+   "R (replan cap)": {
+    "at_low_end": 0.09909048729845446,
+    "at_high_end": 0.09441793637398696
+   },
+   "k (steps)": {
+    "at_low_end": 0.04839692148569149,
+    "at_high_end": 0.15315672156402513
+   },
+   "a (action success)": {
+    "at_low_end": 0.19929731922842794,
+    "at_high_end": 0.02739772687923656
+   },
+   "s (verifier catch)": {
+    "at_low_end": 0.2298755571888064,
+    "at_high_end": 0.0198191054874875
+   }
+  }
+ },
+ "failed_steps_needed_for_s": 49,
+ "tasks_needed_natural": 82
+}

@@ -1,6 +1,6 @@
 """
 ScreenInterpreterAgent — Analyzes a screenshot to produce a structured
-understanding of the current UI state using Gemini 3.1 Pro multimodal.
+understanding of the current UI state using Gemini 2.5 Pro multimodal.
 """
 
 from gemini_client import analyze_screenshot

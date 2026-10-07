@@ -29,6 +29,7 @@ class Session(BaseModel):
     completed_steps: list[StepResult] = Field(default_factory=list)
     current_step_index: int = 0
     status: str = "idle"  # idle | planning | executing | paused | completed | failed
+    replan_count: int = 0  # replans used for the current goal (capped in main.MAX_REPLANS)
     created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     last_screenshot_b64: Optional[str] = None
 

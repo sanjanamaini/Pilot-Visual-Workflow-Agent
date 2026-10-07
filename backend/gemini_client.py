@@ -1,5 +1,5 @@
 """
-Gemini 3.1 Pro client wrapper for Pilot.
+Gemini 2.5 Pro client wrapper for Pilot.
 Handles multimodal (image + text) and text-only calls.
 """
 
@@ -43,7 +43,7 @@ def _get_client() -> genai.Client:
 
 async def analyze_screenshot(image_bytes: bytes, prompt: str) -> dict:
     """
-    Send a screenshot + text prompt to Gemini 3.1 Pro (multimodal).
+    Send a screenshot + text prompt to Gemini 2.5 Pro (multimodal).
     Returns the parsed JSON dict from the model response.
     """
     client = _get_client()
@@ -76,7 +76,7 @@ async def analyze_screenshot(image_bytes: bytes, prompt: str) -> dict:
 
 async def generate_text(prompt: str) -> str:
     """
-    Text-only call to Gemini 3.1 Pro (e.g. narration, planning).
+    Text-only call to Gemini 2.5 Pro (e.g. narration, planning).
     Returns the raw text response.
     """
     client = _get_client()

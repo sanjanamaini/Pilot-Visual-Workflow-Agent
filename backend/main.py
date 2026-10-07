@@ -31,6 +31,10 @@ from agents.action_agent import determine_action
 from agents.verifier import verify_action
 from agents.narrator import narrate_step
 
+# A failed step triggers a replan from the current screen. Without a cap, a step that keeps failing
+# replans forever, each round costing four model calls; after this many replans the goal fails.
+MAX_REPLANS = 3
+
 
 # ---------------------------------------------------------------------------
 # App setup
@@ -130,7 +134,7 @@ async def websocket_endpoint(ws: WebSocket, session_id: str):
             if msg_type == "goal":
                 # User sends a new goal
                 goal = data.get("goal", "")
-                update_session(session_id, goal=goal, status="planning", plan=[], current_step_index=0)
+                update_session(session_id, goal=goal, status="planning", plan=[], current_step_index=0, replan_count=0)
                 session = get_session(session_id)
 
                 await send_json(ws, {
@@ -365,8 +369,16 @@ async def verify_and_continue(ws: WebSocket, session: Session, screenshot_bytes:
         session = get_session(session_id)
         update_session(session_id, status="executing")
         await execute_current_step(ws, session_id, screenshot_bytes)
+    elif verification.get("should_replan", False) and get_session(session_id).replan_count >= MAX_REPLANS:
+        update_session(session_id, status="failed")
+        await send_json(ws, {
+            "type": "status",
+            "status": "failed",
+            "message": f"Stopped after {MAX_REPLANS} replans: {verification.get('observation', 'the step keeps failing')}",
+        })
     elif verification.get("should_replan", False):
         # Replan
+        update_session(session_id, replan_count=get_session(session_id).replan_count + 1)
         await send_json(ws, {
             "type": "narration",
             "step": step_idx,

@@ -3,6 +3,8 @@ PlannerAgent — Breaks a user goal into an ordered sequence of atomic UI action
 given the current screen state and history of completed steps.
 """
 
+from __future__ import annotations
+
 from gemini_client import generate_text
 import json
 

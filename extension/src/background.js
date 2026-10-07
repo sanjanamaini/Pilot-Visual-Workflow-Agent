@@ -118,8 +118,19 @@ async function executeAction(action, stepIndex) {
     }).catch(() => { });
 }
 
+// captureVisibleTab returns device pixels (2x on Retina, more with browser zoom), but
+// Input.dispatchMouseEvent takes CSS pixels, so screenshot coordinates are divided by devicePixelRatio.
+async function getDevicePixelRatio(tabId) {
+    const res = await chrome.debugger.sendCommand({ tabId }, 'Runtime.evaluate', {
+        expression: 'window.devicePixelRatio',
+        returnByValue: true,
+    });
+    return (res && res.result && res.result.value) || 1;
+}
+
 async function performClick(tabId, x, y) {
-    const params = { type: 'mousePressed', x, y, button: 'left', clickCount: 1 };
+    const dpr = await getDevicePixelRatio(tabId);
+    const params = { type: 'mousePressed', x: x / dpr, y: y / dpr, button: 'left', clickCount: 1 };
     await chrome.debugger.sendCommand({ tabId }, 'Input.dispatchMouseEvent', params);
     await chrome.debugger.sendCommand({ tabId }, 'Input.dispatchMouseEvent', { ...params, type: 'mouseReleased' });
 }
