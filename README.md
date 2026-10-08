@@ -10,6 +10,7 @@
 | **Data** | No dataset: a working prototype, with a reliability review in the README |
 | **Result** | Five Gemini-powered agents (screen interpreter, planner, action, verifier, narrator); a failed check triggers replanning |
 | **Stack** | Python, FastAPI, WebSockets, React, Chrome MV3, Gemini |
+| **Project page** | [sanjanamaini.github.io/pilot](https://sanjanamaini.github.io/pilot/?utm_source=github&utm_medium=readme&utm_campaign=pilot) |
 
 Pilot automates browser UI tasks from natural-language instructions ("Move this lead to Proposal Sent") purely by *looking at the screen*, with no per-app API integrations and no brittle DOM selectors. A five-agent pipeline interprets screenshots, plans atomic UI actions, executes them through Chrome's debugger protocol, verifies the result visually, and narrates each step in a side panel.
 
