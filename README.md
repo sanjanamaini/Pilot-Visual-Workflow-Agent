@@ -2,6 +2,15 @@
 
 **Type a goal. Watch the browser do it.**
 
+**At a glance**
+
+| | |
+|---|---|
+| **Question** | Can an agent operate any web app from a plain-English goal by looking at the screen? |
+| **Data** | No dataset: a working prototype, with a reliability review in the README |
+| **Result** | Five Gemini-powered agents (screen interpreter, planner, action, verifier, narrator); a failed check triggers replanning |
+| **Stack** | Python, FastAPI, WebSockets, React, Chrome MV3, Gemini |
+
 Pilot automates browser UI tasks from natural-language instructions ("Move this lead to Proposal Sent") purely by *looking at the screen*, with no per-app API integrations and no brittle DOM selectors. A five-agent pipeline interprets screenshots, plans atomic UI actions, executes them through Chrome's debugger protocol, verifies the result visually, and narrates each step in a side panel.
 
 ## Architecture
